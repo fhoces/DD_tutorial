@@ -26,6 +26,8 @@
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \newif\ifbibliography
+\usepackage{natbib}
+\bibliographystyle{plainnat}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -108,7 +110,9 @@
 
 \title{Dynamic Documents For Your Research Workflow}
 \author{Fernando Hoces de la Guardia\\
-BITSS}
+BITSS\\
+-\\
+Slides at \url{https://goo.gl/ZFQvba}}
 \date{BITSS Annual Meeting, December 2017}
 
 \begin{document}
@@ -118,11 +122,15 @@ BITSS}
 \tableofcontents[hideallsubsections]
 \end{frame}
 
-\section{Dynamic Documents for computational
-reproducibility}\label{dynamic-documents-for-computational-reproducibility}
+\section{Dynamic Documents For Computational
+Reproducibility}\label{dynamic-documents-for-computational-reproducibility}
 
-\begin{frame}[fragile]{Dynamic Documents for computational
-reproducibility}
+\begin{frame}{First: can you take this quick survey please?}
+
+\end{frame}
+
+\begin{frame}[fragile]{Dynamic Documents For Computational
+Reproducibility}
 
 \begin{itemize}
 \tightlist
@@ -293,8 +301,11 @@ Is it something like \(\frac{1}{365} \times N =\) 0.11?
 
 1 - In RStudio:
 \texttt{File-\textgreater{}\ New\ File\ -\textgreater{}\ RMarkdown...}\\
-2 - Name it, and save it. 3 - Review/edit the header, and delete all the
-default body of text except for one code chunk.
+2 - Name it, and save it.\\
+3 - Review/edit the header, and delete all the default body of text
+except for one code chunk.\\
+4 - Define a seed (\texttt{set.seed\ =\ 1234} and number of people in
+the room (\texttt{n.pers\ =\ ?})
 
 \end{frame}
 
@@ -309,9 +320,9 @@ p(n= 40) &= 0.891  \nonumber
 
 \end{frame}
 
-\begin{frame}[fragile]{Code for the math}
+\begin{frame}[fragile]{Code for the math (\url{https://goo.gl/ZFQvba})}
 
-Don't look at this: just copy and past into your report
+Don't look at this: just copy and paste into your report
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -342,7 +353,8 @@ across 10,000 simulations, and report the complement.
 
 \end{frame}
 
-\begin{frame}[fragile]{Code for the simulation}
+\begin{frame}[fragile]{Code for the simulation
+(\url{https://goo.gl/ZFQvba})}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -365,7 +377,7 @@ across 10,000 simulations, and report the complement.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.9219
+## [1] 0.9275
 \end{verbatim}
 
 \end{frame}
@@ -380,7 +392,7 @@ across 10,000 simulations, and report the complement.
 \item
   However the true probability is of \(p(n= 43) = 0.924\)
 \item
-  And the simulated probability is of 0.9239
+  And the simulated probability is of 0.9227
 \end{itemize}
 
 \end{frame}

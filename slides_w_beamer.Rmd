@@ -1,21 +1,21 @@
 ---
 title: "Dynamic Documents For Your Research Workflow"
-author: |
-  | Fernando Hoces de la Guardia
-  | BITSS
+author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/ZFQvba>\n"
 date: "BITSS Annual Meeting, December 2017"
 output:
-  slidy_presentation: default
   ioslides_presentation: default
   beamer_presentation:
     fig_caption: no
     keep_tex: yes
     toc: yes
+  slidy_presentation: default
 ---
 
-# Dynamic Documents for computational reproducibility
+# Dynamic Documents For Computational Reproducibility
 
-## Dynamic Documents for computational reproducibility
+## First: can you take this quick survey please?
+
+## Dynamic Documents For Computational Reproducibility
 - Based on principles of *literate programming* aims at combining code and paper in one single document 
 - Best framework to achieve the holy grail of **one-click reproducible workflow**
 - Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is catching up (more at the end)
@@ -115,8 +115,9 @@ As an illustration lets write a report using the participants in this workshop t
 ## Create a new RMarkdown File
 
 1 - In RStudio: `File-> New File -> RMarkdown...`  
-2 - Name it, and save it. 
-3 - Review/edit the header, and delete all the default body of text except for one code chunk. 
+2 - Name it, and save it.   
+3 - Review/edit the header, and delete all the default body of text except for one code chunk.   
+4 - Define a seed (`set.seed = 1234` and number of people in the room (`n.pers = ?`)
 
 ## The birthday problem: the math
 Actually the math says otherwise: 
@@ -125,9 +126,9 @@ Actually the math says otherwise:
 p(n= `r n.pers`) &= `r  round(1 - factorial(n.pers) * choose(365,n.pers)/ 365^n.pers, 3)`  \nonumber
 \end{align}
 
-## Code for the math
+## Code for the math (<https://goo.gl/ZFQvba>)
 
-Don't look at this: just copy and past into your report
+Don't look at this: just copy and paste into your report
 ```{r math, eval=FALSE}
 \begin{align} 
  1 - \bar p(n) &= 1 \times \left(1-\frac{1}{365}\right) 
@@ -149,7 +150,7 @@ p(n= `r n.pers`) &= `r
  3 - Compute the average number of times a room has `r n.pers` unique birthdays, across 10,000 simulations, and report the complement.    
 
 
-## Code for the simulation   
+## Code for the simulation (<https://goo.gl/ZFQvba>)  
 
 ```{r birthday prob, eval=TRUE, echo=TRUE}
 birthday.prob = function(n.pers, n.sims) {
