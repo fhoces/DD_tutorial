@@ -1,0 +1,70 @@
+---
+title: "Dynamic Documents for Your Research Workflow"
+author: |
+  | Fernando Hoces de la Guardia
+  | BITSS
+date: "BITSS Annual Meeting, December 2017"
+output:
+  ioslides_presentation: default
+  beamer_presentation:
+    fig_caption: no
+    keep_tex: yes
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Dynamic Documents for computational reproducibility
+- Based on principles of *literate programming* aims at combining code and paper in one single document 
+- Best framework to achieve the holy grail of **one-click reproducible workflow**
+- Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is cathching up (more the end)
+
+## Currently code and narrative components live in separate universes 
+![](./Two universes.png)   
+
+
+## Dynamic Documents: integrate the two universes!  
+![](./One universe.png)
+
+  
+## Dynamic Documents: A Reciepe  
+
+- 1 simple language that can combine text and code: `Markdown` 
+- 1 statistical package to do the analysis (`R`, `Python`, `3S's?`)
+- 1 machinery to combine analysis and text to create a single output: `Pandoc`
+- [Optional-but-not-really] 1 program to bring all the elements together: RStudio/RMarkdown, Jupyter
+
+
+
+## For our excercise: R Markdown  
+
+- `R`: **open source** programming language design for statistical analysis.   
+- RStudio: free software that provides and Integrated Development Enviroment (IDE)  
+- RStudio combines all together R + Markdown + Pandoc to produce multiple outputs
+![](http://rmarkdown.rstudio.com/images/RMarkdownFlow.png)  
+
+
+## R Markdown  
+![](http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
+
+## Slide with Bullets
+
+> - Bullet 1
+> - Bullet 2
+> - Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
