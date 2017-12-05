@@ -365,3 +365,4 @@ vignettes/*.pdf
 # expex forward references with \gathertags
 
 # End of https://www.gitignore.io/api/r,tex,latex
+.Rproj.user
