@@ -5,22 +5,31 @@ author: |
   | BITSS
 date: "BITSS Annual Meeting, December 2017"
 output:
-  ioslides_presentation: default
   beamer_presentation:
     fig_caption: no
     keep_tex: yes
+  ioslides_presentation: default
   slidy_presentation: default
 ---
 
-```{r setup, include=FALSE}
+```{r setup, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+# Loading required libraries
+list.of.packages <- c("foreign", "stargazer", "sandwich", "haven")
+
+# Chicking if library installed, installed if not. 
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages, repos= "http://cran.cnr.berkeley.edu/") 
+
+# Calling libraries 
+lapply(list.of.packages, require, character.only = TRUE)
 ```
 
 
 ## Dynamic Documents for computational reproducibility
 - Based on principles of *literate programming* aims at combining code and paper in one single document 
 - Best framework to achieve the holy grail of **one-click reproducible workflow**
-- Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is cathching up (more the end)
+- Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is cathching up (more at the end)
 
 ## Currently code and narrative components live in separate universes 
 ![](./Two universes.png)   
@@ -43,24 +52,87 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - `R`: **open source** programming language design for statistical analysis.   
 - RStudio: free software that provides and Integrated Development Enviroment (IDE)  
-- RStudio combines all together R + Markdown + Pandoc to produce multiple outputs
+- RStudio combines all together: R + Markdown + Pandoc to produce multiple outputs
 ![](http://rmarkdown.rstudio.com/images/RMarkdownFlow.png)  
 
 
 ## R Markdown  
 ![](http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
 
-## Slide with Bullets
+## Basic Structure
 
-> - Bullet 1
-> - Bullet 2
-> - Bullet 3
+- A header
+- Text
+- Code: inline and chunks
+
+## Basic Structure: Header
+
+```{r smpl yml, eval=FALSE, echo=TRUE}
+---
+title: "Sample Paper"
+author: "Fernando Hoces de la Guardia"
+output: html_document
+---
+```  
+
+```{r global pars, eval=TRUE, echo=FALSE, results='hide'}
+n.pers = 40
+```  
+
+
+## Basic Structure: Body of Text
+
+```{r smpl_yml1, eval=FALSE, echo=TRUE}
+---
+header
+---
+```
+
+This is where you write your paper. For example, we could use the people in this workshop to illustrate the famous [birthday paradox](https://en.wikipedia.org/wiki/Birthday_problem). 
+What is the probability that at least two people this room share the same birthday?
+
+Is it something like $\frac{1}{365} \times N =$   `r round(1/365 * n.pers, 3)`?
+
+
+## Basic Structure: Body of Text
+
+```{r smpl_yml2, eval=FALSE, echo=TRUE}
+---
+The Birthday Problem
+---
+```
+
+Actually the math says otherwise: 
+\begin{align} 
+ 1 - \bar p(n) &= 1 \times \left(1-\frac{1}{365}\right) \times \left(1-\frac{2}{365}\right) \times \cdots \times \left(1-\frac{n-1}{365}\right) \nonumber  \\  &= \frac{ 365 \times 364 \times \cdots \times (365-n+1) }{ 365^n } \nonumber \\ &= \frac{ 365! }{ 365^n (365-n)!} = \frac{n!\cdot\binom{365}{n}}{365^n}\\
+p(n= `r n.pers`) &= `r  round(1 - factorial(n.pers) * choose(365,n.pers)/ 365^n.pers, 3)`  \nonumber
+\end{align}
+
+
+
+## Basic Structure: Code
+
+Don't believe me? Let's run a simple simulation.   
+ 1 - Generate a 10,000 simulated rooms with $n = `r n.pers`$ random birthdays, and store the results in matrix where each row represents a room.   
+ 2 - For each room (row) compute the number of times unique birthdays.   
+ 3 - Compute the average number of times a room has `r n.pers` different birthdays, across 10,000 simulatinos, and report the complement.    
+
+```{r birthday prob, eval=TRUE, echo=TRUE}
+n.pers = 40
+birthdays = matrix(round(runif(n.pers * 1e4, 1, 365)), nrow = 1e4, ncol = n.pers)
+unique.birthdays = apply(birthdays, 1, unique)
+all.different = (lapply(unique.birthdays, length) == 40)
+result = 1 - mean(all.different)
+print(result)
+```
+
+
 
 ## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
+```{r cars, echo = TRUE, fig.align='center'}
+
+```  
 
 ## Slide with Plot
 

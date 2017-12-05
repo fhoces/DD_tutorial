@@ -103,7 +103,7 @@ BITSS</p>' ,
 <ul>
 <li>Based on principles of <em>literate programming</em> aims at combining code and paper in one single document</li>
 <li>Best framework to achieve the holy grail of <strong>one-click reproducible workflow</strong></li>
-<li>Best two current implementations: <code>RMarkdown (R)</code> &amp; <code>Jupyter (Python)</code>. <code>Stata</code> is cathching up (more the end)</li>
+<li>Best two current implementations: <code>RMarkdown (R)</code> &amp; <code>Jupyter (Python)</code>. <code>Stata</code> is cathching up (more at the end)</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>Currently code and narrative components live in separate universes</h2></hgroup><article  id="currently-code-and-narrative-components-live-in-separate-universes">
@@ -128,20 +128,25 @@ BITSS</p>' ,
 <ul>
 <li><code>R</code>: <strong>open source</strong> programming language design for statistical analysis.<br/></li>
 <li>RStudio: free software that provides and Integrated Development Enviroment (IDE)<br/></li>
-<li>RStudio combines all together R + Markdown + Pandoc to produce multiple outputs <img src='http://rmarkdown.rstudio.com/images/RMarkdownFlow.png' title=''/></li>
+<li>RStudio combines all together: R + Markdown + Pandoc to produce multiple outputs <img src='http://rmarkdown.rstudio.com/images/RMarkdownFlow.png' title=''/></li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2>R Markdown</h2></hgroup><article  id="r-markdown">
 
 <img src='http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png' title='fig:'/>
 
-</article></slide><slide class=''><hgroup><h2>Slide with Bullets</h2></hgroup><article  id="slide-with-bullets">
+</article></slide><slide class=''><hgroup><h2>Basic Structure</h2></hgroup><article  id="basic-structure">
 
-<ul class = 'build'>
-<li>Bullet 1</li>
-<li>Bullet 2</li>
-<li>Bullet 3</li>
+<ul>
+<li>A header</li>
 </ul>
+
+<pre class = 'prettyprint lang-r'>---
+title: &quot;Short HTML example of R Markdown&quot;
+author: &quot;Garret Christensen&quot;
+date: &quot;`r format(Sys.time(), &#39;%d %B, %Y&#39;)`&quot;
+output: html_document
+---</pre>
 
 </article></slide><slide class=''><hgroup><h2>Slide with R Output</h2></hgroup><article  id="slide-with-r-output">
 

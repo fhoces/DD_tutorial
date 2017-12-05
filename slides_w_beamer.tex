@@ -127,8 +127,8 @@ reproducibility}
   reproducible workflow}
 \item
   Best two current implementations: \texttt{RMarkdown\ (R)} \&
-  \texttt{Jupyter\ (Python)}. \texttt{Stata} is cathching up (more the
-  end)
+  \texttt{Jupyter\ (Python)}. \texttt{Stata} is cathching up (more at
+  the end)
 \end{itemize}
 
 \end{frame}
@@ -176,7 +176,7 @@ universes}
   RStudio: free software that provides and Integrated Development
   Enviroment (IDE)\\
 \item
-  RStudio combines all together R + Markdown + Pandoc to produce
+  RStudio combines all together: R + Markdown + Pandoc to produce
   multiple outputs
   \includegraphics{http://rmarkdown.rstudio.com/images/RMarkdownFlow.png}
 \end{itemize}
@@ -189,37 +189,100 @@ universes}
 
 \end{frame}
 
-\begin{frame}{Slide with Bullets}
+\begin{frame}{Basic Structure}
 
-\begin{itemize}[<+->]
+\begin{itemize}
 \tightlist
 \item
-  Bullet 1
+  A header
 \item
-  Bullet 2
+  Text
 \item
-  Bullet 3
+  Code: inline and chunks
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}[fragile]{Slide with R Output}
+\begin{frame}[fragile]{Basic Structure: Header}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(cars)}
+\NormalTok{---}
+\NormalTok{title:}\StringTok{ "Sample Paper"}
+\NormalTok{author:}\StringTok{ "Fernando Hoces de la Guardia"}
+\NormalTok{output:}\StringTok{ }\NormalTok{html_document}
+\NormalTok{---}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Basic Structure: Body of Text}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{---}
+\NormalTok{header}
+\NormalTok{---}
+\end{Highlighting}
+\end{Shaded}
+
+This is where you write your paper. For example, we could use the people
+in this workshop to illustrate the famous
+\href{https://en.wikipedia.org/wiki/Birthday_problem}{birthday paradox}.
+What is the probability that at least two people this room share the
+same birthday?
+
+Is it something like \(\frac{1}{365} \times N =\) 0.11?
+
+\end{frame}
+
+\begin{frame}[fragile]{Basic Structure: Body of Text}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{---}
+\NormalTok{The Birthday Problem}
+\NormalTok{---}
+\end{Highlighting}
+\end{Shaded}
+
+Actually the math says otherwise:
+
+\begin{align} 
+ 1 - \bar p(n) &= 1 \times \left(1-\frac{1}{365}\right) \times \left(1-\frac{2}{365}\right) \times \cdots \times \left(1-\frac{n-1}{365}\right) \nonumber  \\  &= \frac{ 365 \times 364 \times \cdots \times (365-n+1) }{ 365^n } \nonumber \\ &= \frac{ 365! }{ 365^n (365-n)!} = \frac{n!\cdot\binom{365}{n}}{365^n}\\
+p(n= 40) &= 0.891  \nonumber
+\end{align}
+
+\end{frame}
+
+\begin{frame}[fragile]{Basic Structure: Code}
+
+Don't believe me? Let's run a simple simulation.\\
+1 - Generate a 10,000 simulated rooms with \(n = 40\) random birthdays,
+and store the results in matrix where each row represents a room.\\
+2 - For each room (row) compute the number of times unique birthdays.\\
+3 - Compute the average number of times a room has 40 different
+birthdays, across 10,000 simulatinos, and report the complement.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n.pers =}\StringTok{ }\DecValTok{40}
+\NormalTok{birthdays =}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{round}\NormalTok{(}\KeywordTok{runif}\NormalTok{(n.pers *}\StringTok{ }\FloatTok{1e4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{365}\NormalTok{)), }\DataTypeTok{nrow =} \FloatTok{1e4}\NormalTok{, }\DataTypeTok{ncol =} \NormalTok{n.pers)}
+\NormalTok{unique.birthdays =}\StringTok{ }\KeywordTok{apply}\NormalTok{(birthdays, }\DecValTok{1}\NormalTok{, unique)}
+\NormalTok{all.different =}\StringTok{ }\NormalTok{(}\KeywordTok{lapply}\NormalTok{(unique.birthdays, length) ==}\StringTok{ }\DecValTok{40}\NormalTok{)}
+\NormalTok{result =}\StringTok{ }\DecValTok{1} \NormalTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(all.different)}
+\KeywordTok{print}\NormalTok{(result)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
+## [1] 0.8872
 \end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Slide with R Output}
 
 \end{frame}
 
