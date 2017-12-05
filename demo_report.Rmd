@@ -1,0 +1,37 @@
+---
+title: "The Birhtday Problem at BITSS 2017"
+author: "Fernando Hoces de la Guardia"
+date: "12/4/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+n.pers = 43
+set.seed(1234)
+```
+
+We want to estimate the probabilty that at least two people in this room share the same birthday. 
+
+There are `r n.pers` people in the room. Some people could guess that the probility is something like this? 
+$$\frac{1}{365} \times N =   `r round(1/365 * n.pers, 3)`$$
+
+```{r birthday prob, eval=TRUE, echo=TRUE}
+birthday.prob = function(n.pers, n.sims) {
+  # simulate birthdays
+  birthdays = matrix(round(runif(n.pers * n.sims, 1, 365)), 
+                      nrow = n.sims, ncol = n.pers)
+  # for each room (row) get unique birthdays
+  unique.birthdays = apply(birthdays, 1, unique)
+  # Indicator with 1 if all are unique birthdays
+  all.different = (lapply(unique.birthdays, length) == n.pers)
+  # Compute average time all have different birthdays 
+  result = 1 - mean(all.different)
+return(result)
+}
+
+print(birthday.prob(n.pers = 43, n.sims = 1e4))
+```
+
+
+

@@ -114,6 +114,13 @@ BITSS}
 \begin{document}
 \frame{\titlepage}
 
+\begin{frame}
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Dynamic Documents for computational
+reproducibility}\label{dynamic-documents-for-computational-reproducibility}
+
 \begin{frame}[fragile]{Dynamic Documents for computational
 reproducibility}
 
@@ -164,6 +171,9 @@ universes}
 \end{itemize}
 
 \end{frame}
+
+\section{One Type of Dynamic Document: R
+Markdown}\label{one-type-of-dynamic-document-r-markdown}
 
 \begin{frame}[fragile]{For our excercise: R Markdown}
 
@@ -227,25 +237,67 @@ universes}
 \end{Highlighting}
 \end{Shaded}
 
-This is where you write your paper. For example, we could use the people
-in this workshop to illustrate the famous
-\href{https://en.wikipedia.org/wiki/Birthday_problem}{birthday paradox}.
-What is the probability that at least two people this room share the
-same birthday?
-
-Is it something like \(\frac{1}{365} \times N =\) 0.11?
+This is where you write your paper. Nothing much to add. You can check
+Markdown syntax here. And it can use can type equations using LaTex
+syntax!
 
 \end{frame}
 
-\begin{frame}[fragile]{Basic Structure: Body of Text}
+\begin{frame}[fragile]{Basic Structure: Code Chunks and Inline}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{---}
-\NormalTok{The Birthday Problem}
+\NormalTok{header}
 \NormalTok{---}
 \end{Highlighting}
 \end{Shaded}
+
+Body of text.
+
+To begin a piece of code (``code chunk''). Enclose them in the following
+expression (Ctrl/Cmd + shift/optn + i)
+
+\begin{verbatim}
+```{r, eval=TRUE}
+here goes the code
+```
+\end{verbatim}
+
+To write inline use only one bactick to open followed by an ``r''" and
+one to close \texttt{`r\ 1+1`} in the output.
+
+\end{frame}
+
+\section{Practical Excercise}\label{practical-excercise}
+
+\begin{frame}{Hands-on excercise: the birthday problem!}
+
+As an illustration lets write a report use the participants in this
+workshop to illustrate the famous
+\href{https://en.wikipedia.org/wiki/Birthday_problem}{birthday paradox}.
+
+\begin{quote}
+What is the probability that at least two people this room share the
+same birthday?
+\end{quote}
+
+\begin{quote}
+Is it something like \(\frac{1}{365} \times N =\) 0.11?
+\end{quote}
+
+\end{frame}
+
+\begin{frame}[fragile]{Create a new RMarkdown File}
+
+1 - In RStudio:
+\texttt{File-\textgreater{}\ New\ File\ -\textgreater{}\ RMarkdown...}\\
+2 - Name it, and save it. 3 - Review/edit the header, and delete all the
+default body of text exept for one code chunk.
+
+\end{frame}
+
+\begin{frame}{The birthday problem: the math}
 
 Actually the math says otherwise:
 
@@ -256,39 +308,102 @@ p(n= 40) &= 0.891  \nonumber
 
 \end{frame}
 
-\begin{frame}[fragile]{Basic Structure: Code}
+\begin{frame}[fragile]{Code for the math}
 
-Don't believe me? Let's run a simple simulation.\\
-1 - Generate a 10,000 simulated rooms with \(n = 40\) random birthdays,
-and store the results in matrix where each row represents a room.\\
-2 - For each room (row) compute the number of times unique birthdays.\\
-3 - Compute the average number of times a room has 40 different
-birthdays, across 10,000 simulatinos, and report the complement.
+Don't look at this: just copy and past into your report
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{n.pers =}\StringTok{ }\DecValTok{40}
-\NormalTok{birthdays =}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{round}\NormalTok{(}\KeywordTok{runif}\NormalTok{(n.pers *}\StringTok{ }\FloatTok{1e4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{365}\NormalTok{)), }\DataTypeTok{nrow =} \FloatTok{1e4}\NormalTok{, }\DataTypeTok{ncol =} \NormalTok{n.pers)}
-\NormalTok{unique.birthdays =}\StringTok{ }\KeywordTok{apply}\NormalTok{(birthdays, }\DecValTok{1}\NormalTok{, unique)}
-\NormalTok{all.different =}\StringTok{ }\NormalTok{(}\KeywordTok{lapply}\NormalTok{(unique.birthdays, length) ==}\StringTok{ }\DecValTok{40}\NormalTok{)}
-\NormalTok{result =}\StringTok{ }\DecValTok{1} \NormalTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(all.different)}
-\KeywordTok{print}\NormalTok{(result)}
+\NormalTok{\textbackslash{}begin\{align\} }
+ \DecValTok{1} \NormalTok{-}\StringTok{ }\NormalTok{\textbackslash{}bar }\KeywordTok{p}\NormalTok{(n) &}\ErrorTok{=}\StringTok{ }\DecValTok{1} \NormalTok{\textbackslash{}times \textbackslash{}}\KeywordTok{left}\NormalTok{(}\DecValTok{1}\NormalTok{-\textbackslash{}frac\{}\DecValTok{1}\NormalTok{\}\{}\DecValTok{365}\NormalTok{\}\textbackslash{}right) }
+ \NormalTok{\textbackslash{}times \textbackslash{}}\KeywordTok{left}\NormalTok{(}\DecValTok{1}\NormalTok{-\textbackslash{}frac\{}\DecValTok{2}\NormalTok{\}\{}\DecValTok{365}\NormalTok{\}\textbackslash{}right) \textbackslash{}times \textbackslash{}cdots \textbackslash{}times }
+ \NormalTok{\textbackslash{}}\KeywordTok{left}\NormalTok{(}\DecValTok{1}\NormalTok{-\textbackslash{}frac\{n}\DecValTok{-1}\NormalTok{\}\{}\DecValTok{365}\NormalTok{\}\textbackslash{}right) \textbackslash{}nonumber  \textbackslash{}\textbackslash{}  }
+ \NormalTok{&}\ErrorTok{=}\StringTok{ }\NormalTok{\textbackslash{}frac\{ }\DecValTok{365} \NormalTok{\textbackslash{}times }\DecValTok{364} \NormalTok{\textbackslash{}times \textbackslash{}cdots \textbackslash{}times }
+   \NormalTok{(}\DecValTok{365}\NormalTok{-n}\DecValTok{+1}\NormalTok{) \}\{ }\DecValTok{365}\NormalTok{^n \} \textbackslash{}nonumber \textbackslash{}\textbackslash{} }
+ \NormalTok{&}\ErrorTok{=}\StringTok{ }\NormalTok{\textbackslash{}frac\{ }\DecValTok{365}\NormalTok{!}\StringTok{ }\NormalTok{\}\{ }\DecValTok{365}\NormalTok{^}\KeywordTok{n} \NormalTok{(}\DecValTok{365}\NormalTok{-n)!\} =}\StringTok{ }
+\StringTok{   }\NormalTok{\textbackslash{}frac\{n!\textbackslash{}cdot\textbackslash{}binom\{}\DecValTok{365}\NormalTok{\}\{n\}\}\{}\DecValTok{365}\NormalTok{^n\}\textbackslash{}\textbackslash{}}
+\KeywordTok{p}\NormalTok{(}\DataTypeTok{n=} \StringTok{`}\DataTypeTok{r n.pers}\StringTok{`}\NormalTok{) &}\ErrorTok{=}\StringTok{ `}\DataTypeTok{r  }
+\DataTypeTok{ round(1 - factorial(n.pers) * }
+\DataTypeTok{         choose(365,n.pers)/ 365^n.pers, 3)}\StringTok{`}\NormalTok{\textbackslash{}nonumber}
+\NormalTok{\textbackslash{}end\{align\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}{Don't like math? Let's run a simple simulation!}
+
+1 - Simulate 10,000 rooms with \(n = 40\) random birthdays, and store
+the results in matrix where each row represents a room.\\
+2 - For each room (row) compute the number of unique birthdays.\\
+3 - Compute the average number of times a room has 40 unique birthdays,
+across 10,000 simulatinos, and report the complement.
+
+\end{frame}
+
+\begin{frame}[fragile]{Code for the simulation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{birthday.prob =}\StringTok{ }\NormalTok{function(n.pers, n.sims) \{}
+  \CommentTok{# simulate birthdays}
+  \NormalTok{birthdays =}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{round}\NormalTok{(}\KeywordTok{runif}\NormalTok{(n.pers *}\StringTok{ }\NormalTok{n.sims, }\DecValTok{1}\NormalTok{, }\DecValTok{365}\NormalTok{)), }
+                      \DataTypeTok{nrow =} \NormalTok{n.sims, }\DataTypeTok{ncol =} \NormalTok{n.pers)}
+  \CommentTok{# for each room (row) get unique birthdays}
+  \NormalTok{unique.birthdays =}\StringTok{ }\KeywordTok{apply}\NormalTok{(birthdays, }\DecValTok{1}\NormalTok{, unique)}
+  \CommentTok{# Indicator with 1 if all are unique birthdays}
+  \NormalTok{all.different =}\StringTok{ }\NormalTok{(}\KeywordTok{lapply}\NormalTok{(unique.birthdays, length) ==}\StringTok{ }\NormalTok{n.pers)}
+  \CommentTok{# Compute average time all have different birthdays }
+  \NormalTok{result =}\StringTok{ }\DecValTok{1} \NormalTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(all.different)}
+\KeywordTok{return}\NormalTok{(result)}
+\NormalTok{\}}
+\NormalTok{n.pers.param =}\StringTok{ }\DecValTok{43}
+\NormalTok{n.sims.param =}\StringTok{ }\FloatTok{1e4}
+\KeywordTok{birthday.prob}\NormalTok{(n.pers.param,n.sims.param)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.8872
+## [1] 0.9221
 \end{verbatim}
 
 \end{frame}
 
-\begin{frame}{Slide with R Output}
+\begin{frame}{Results}
+
+\begin{itemize}
+\tightlist
+\item
+  Many people originally think of a prob \textasciitilde{}
+  \(\frac{1}{365} \times N =\) 0.118
+\item
+  However the true probability is of \(p(n= 43) = 0.924\)
+\item
+  And the simulated probability is of 0.9273
+\end{itemize}
 
 \end{frame}
 
-\begin{frame}{Slide with Plot}
+\section{Final Remarks \& More
+Resources}\label{final-remarks-more-resources}
 
-\includegraphics{slides_w_beamer_files/figure-beamer/pressure-1.pdf}
+\begin{frame}{Final Remarks \& More Resources}
+
+\begin{itemize}
+\tightlist
+\item
+  With DD with can achieve a one-click reproducible workflow.
+\item
+  This is particularly helpful to understand/present results that are
+  hard to digest.
+\item
+  Stata just develop an internal version of DD for v15.
+  \href{https://www.bitss.org/2017/09/05/review-of-statas-dyndoc/}{Review
+  Here}
+\item
+  Want to learn more: \href{https://bookdown.org/}{great free books}
+  (can you guess how they were written?)
+\end{itemize}
 
 \end{frame}
 
