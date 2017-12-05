@@ -5,12 +5,12 @@ author: |
   | BITSS
 date: "BITSS Annual Meeting, December 2017"
 output:
+  slidy_presentation: default
+  ioslides_presentation: default
   beamer_presentation:
     fig_caption: no
     keep_tex: yes
-    toc: true 
-  ioslides_presentation: default
-  slidy_presentation: default
+    toc: yes
 ---
 
 # Dynamic Documents for computational reproducibility
@@ -78,7 +78,7 @@ header
 ---
 ```
 
-This is where you write your paper. Nothing much to add. You can check Markdown syntax here. And it can use can type equations using LaTex syntax!
+This is where you write your paper. Nothing much to add. You can check Markdown [syntax here](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf). And it can use can type equations using LaTex syntax!
 
 ## Basic Structure: Code Chunks and Inline
 
@@ -106,7 +106,7 @@ To write inline use only one Backtick to open followed by an "r"" and one to clo
 
 ## Hands-on excercise: the birthday problem!
 
-As an illustration lets write a report use the participants in this workshop to illustrate the famous [birthday paradox](https://en.wikipedia.org/wiki/Birthday_problem). 
+As an illustration lets write a report using the participants in this workshop to illustrate the famous [birthday problem](https://en.wikipedia.org/wiki/Birthday_problem). 
 
 >What is the probability that at least two people this room share the same birthday?
 

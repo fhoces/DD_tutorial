@@ -106,7 +106,7 @@
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
 
-\title{Dynamic Documents for Your Research Workflow}
+\title{Dynamic Documents For Your Research Workflow}
 \author{Fernando Hoces de la Guardia\\
 BITSS}
 \date{BITSS Annual Meeting, December 2017}
@@ -134,8 +134,8 @@ reproducibility}
   reproducible workflow}
 \item
   Best two current implementations: \texttt{RMarkdown\ (R)} \&
-  \texttt{Jupyter\ (Python)}. \texttt{Stata} is cathching up (more at
-  the end)
+  \texttt{Jupyter\ (Python)}. \texttt{Stata} is catching up (more at the
+  end)
 \end{itemize}
 
 \end{frame}
@@ -184,7 +184,7 @@ Markdown}\label{one-type-of-dynamic-document-r-markdown}
   statistical analysis.\\
 \item
   RStudio: free software that provides and Integrated Development
-  Enviroment (IDE)\\
+  Environment (IDE)\\
 \item
   RStudio combines all together: R + Markdown + Pandoc to produce
   multiple outputs
@@ -238,8 +238,9 @@ Markdown}\label{one-type-of-dynamic-document-r-markdown}
 \end{Shaded}
 
 This is where you write your paper. Nothing much to add. You can check
-Markdown syntax here. And it can use can type equations using LaTex
-syntax!
+Markdown
+\href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{syntax
+here}. And it can use can type equations using LaTex syntax!
 
 \end{frame}
 
@@ -264,7 +265,7 @@ here goes the code
 ```
 \end{verbatim}
 
-To write inline use only one bactick to open followed by an ``r''" and
+To write inline use only one Backtick to open followed by an ``r''" and
 one to close \texttt{`r\ 1+1`} in the output.
 
 \end{frame}
@@ -273,9 +274,9 @@ one to close \texttt{`r\ 1+1`} in the output.
 
 \begin{frame}{Hands-on excercise: the birthday problem!}
 
-As an illustration lets write a report use the participants in this
+As an illustration lets write a report using the participants in this
 workshop to illustrate the famous
-\href{https://en.wikipedia.org/wiki/Birthday_problem}{birthday paradox}.
+\href{https://en.wikipedia.org/wiki/Birthday_problem}{birthday problem}.
 
 \begin{quote}
 What is the probability that at least two people this room share the
@@ -293,7 +294,7 @@ Is it something like \(\frac{1}{365} \times N =\) 0.11?
 1 - In RStudio:
 \texttt{File-\textgreater{}\ New\ File\ -\textgreater{}\ RMarkdown...}\\
 2 - Name it, and save it. 3 - Review/edit the header, and delete all the
-default body of text exept for one code chunk.
+default body of text except for one code chunk.
 
 \end{frame}
 
@@ -337,7 +338,7 @@ Don't look at this: just copy and past into your report
 the results in matrix where each row represents a room.\\
 2 - For each room (row) compute the number of unique birthdays.\\
 3 - Compute the average number of times a room has 40 unique birthdays,
-across 10,000 simulatinos, and report the complement.
+across 10,000 simulations, and report the complement.
 
 \end{frame}
 
@@ -364,7 +365,7 @@ across 10,000 simulatinos, and report the complement.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.9221
+## [1] 0.9219
 \end{verbatim}
 
 \end{frame}
@@ -379,7 +380,7 @@ across 10,000 simulatinos, and report the complement.
 \item
   However the true probability is of \(p(n= 43) = 0.924\)
 \item
-  And the simulated probability is of 0.9273
+  And the simulated probability is of 0.9239
 \end{itemize}
 
 \end{frame}
@@ -400,6 +401,8 @@ Resources}\label{final-remarks-more-resources}
   Stata just develop an internal version of DD for v15.
   \href{https://www.bitss.org/2017/09/05/review-of-statas-dyndoc/}{Review
   Here}
+\item
+  More great examples \href{}{here}
 \item
   Want to learn more: \href{https://bookdown.org/}{great free books}
   (can you guess how they were written?)
